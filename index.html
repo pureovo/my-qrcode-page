@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>姓名查询系统</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            max-width: 400px;
+            margin: 50px auto;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h2 { text-align: center; color: #333; margin-bottom: 30px; }
+        .input-group { margin-bottom: 20px; }
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #666;
+            font-size: 14px;
+        }
+        input[type="text"] {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 16px;
+            box-sizing: border-box;
+        }
+        input[type="text"]:focus {
+            outline: none;
+            border-color: #4CAF50;
+        }
+        button {
+            width: 100%;
+            padding: 14px;
+            background: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        button:hover { background: #45a049; }
+        #result {
+            margin-top: 20px;
+            padding: 20px;
+            background: #e8f5e9;
+            border-radius: 8px;
+            display: none;
+        }
+        #result.show { display: block; }
+        .error {
+            background: #ffebee !important;
+            color: #c62828;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>🎯 专属内容查询</h2>
+        
+        <div class="input-group">
+            <label for="nameInput">输入您的名字</label>
+            <input type="text" id="nameInput" placeholder="请输入姓名" autocomplete="off">
+        </div>
+        
+        <button onclick="checkName()">查看我的专属内容</button>
+        
+        <div id="result"></div>
+    </div>
+
+    <script>
+        // 数据配置：名字对应的内容
+        const data = {
+            "张三": "欢迎张三！您的专属座位是A区12号，请前往就座。",
+            "李四": "李四您好！您获得本次活动的特别礼品一份，请至服务台领取。",
+            "王五": "王五，恭喜您！您的考核成绩为优秀，继续保持！",
+        };
+
+        function checkName() {
+            const name = document.getElementById('nameInput').value.trim();
+            const resultDiv = document.getElementById('result');
+            
+            if (!name) {
+                resultDiv.className = 'show error';
+                resultDiv.innerHTML = '请输入姓名';
+                return;
+            }
+            
+            if (data[name]) {
+                resultDiv.className = 'show';
+                resultDiv.innerHTML = `<strong>${name}</strong>，${data[name]}`;
+            } else {
+                resultDiv.className = 'show error';
+                resultDiv.innerHTML = '未找到该姓名的信息，请检查输入是否正确。';
+            }
+        }
+
+        document.getElementById('nameInput').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') checkName();
+        });
+    </script>
+</body>
+</html>
