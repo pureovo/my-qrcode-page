@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>姓名查询系统</title>
+    <title>给家长的一封信</title>
     <style>
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
@@ -66,14 +66,14 @@
 </head>
 <body>
     <div class="container">
-        <h2>🎯 专属内容查询</h2>
+        <h2>🎯 学员七队专属内容</h2>
         
         <div class="input-group">
-            <label for="nameInput">输入您的名字</label>
+            <label for="nameInput">输入您孩子的名字</label>
             <input type="text" id="nameInput" placeholder="请输入姓名" autocomplete="off">
         </div>
         
-        <button onclick="checkName()">查看我的专属内容</button>
+        <button onclick="checkName()">查看内容</button>
         
         <div id="result"></div>
     </div>
@@ -81,9 +81,9 @@
     <script>
         // 数据配置：名字对应的内容
         const data = {
-            "张三": "欢迎张三！您的专属座位是A区12号，请前往就座。",
-            "李四": "李四您好！您获得本次活动的特别礼品一份，请至服务台领取。",
-            "王五": "王五，恭喜您！您的考核成绩为优秀，继续保持！",
+            "刘浩喆": "刘浩喆导员是一位非常帅的同志。",
+            "周柯任": "神明在注视着你，祂将庇佑你的一切。",
+            "盛晟": "cc！！！盛晟老师！！",
         };
 
         function checkName() {
